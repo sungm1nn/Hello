@@ -2,13 +2,13 @@ import pymysql
 
 from russia import get_news, get_news_link
 
-key_title = []; key_text = []; key_update = []; key_img = []
+key_title = []; key_text = []; key_update = []; key_img = []; 
 
 links = get_news_link()
 
-# for i in key_links:
-get_news(links[0], key_title, key_text, key_update, key_img)
-print(links[0], key_title[0], key_text[0], key_update[0], key_img[0])
+for i in links:
+	get_news(i, key_title, key_text, key_update, key_img)
+#print(links[0], key_title[0], key_text[0], key_update[0], key_img[0])
 
 conn = pymysql.connect(
 	host='113.198.137.163',
@@ -23,9 +23,10 @@ curs = conn.cursor()
 
 russia = "INSERT ignore INTO article_ledger (country_code, title, article_link, main_text, image_link, article_reg_dtime) VALUES (%s, %s, %s,%s,%s, %s)"
 
-val = (c_code, key_title[0], links[0], key_text[0],  key_img[0], key_update[0] )
-Clear = "TRUNCATE TABLE article_ledger"
+for i in range(len(links)):
+	curs.execute(russia,(c_code, key_title[i], links[i], key_text[i],  key_img[i], key_update[i]))
 
-curs.execute(russia, val)
 
-print("AAA")
+conn.commit()
+conn.close()
+
