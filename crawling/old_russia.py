@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import re
 from datetime import datetime
-
+import trans
 key = "covid"
 link = "https://ria.ru/search/?query="
 
@@ -65,5 +65,6 @@ for i in range(len(key_links)):
     print("title = " + key_title[i])
     print("update = " + key_update[i])
     print("text = " + key_text[i])
+    trans.trans(str(key_text[i]))
     print("img = " + key_img[i])
     print("\n\n")
