@@ -16,3 +16,4 @@ def trans(text, transtext):
         
         transtext.append(trans_t)
         print(trans_t)
+    print(trans_t)
