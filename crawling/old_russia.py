@@ -65,6 +65,11 @@ for i in range(len(key_links)):
     print("title = " + key_title[i])
     print("update = " + key_update[i])
     print("text = " + key_text[i])
-    trans.trans(str(key_text[i]))
+    while True:
+        try:
+            print(trans.trans(str(key_text[i]), 'ru'))
+            break
+        except:
+            pass
     print("img = " + key_img[i])
     print("\n\n")

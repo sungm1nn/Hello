@@ -1,28 +1,23 @@
 #pip install googletrans==4.0.0-rc1
 from googletrans import Translator
 
-def trans(txt):
+def trans(txt, lang):
     translator = Translator()
+    #translator.raise_Exception = True
     fulltrans = ''
     trans_t=''
-    a = []
-    for t in txt:
-        tleng = len(t)
-        if tleng > 5000:
-            tmp = 0
-            while tmp <tleng:
-                a.append(t[tmp:t.rfind('.',tmp,tmp+5000)])
-                if tmp+5000 > tleng:
-                    tmp= tleng
-                    a.append(t[tmp:t.rfind('.',tmp,tmp+5000)])
-                    break
-                else:
-                    tmp = t.rfind('.',tmp,tmp+5000)+1
-            #a = [t[i:i + 5000] for i in range(0, tleng, 5000)]
-            for j in a:
-                trans_t += translator.translate(j, src='ru', dest='ko').text
-        else:
-            trans_t += translator.translate(t, dest='ko', src='ru').text
-
-        fulltrans+=trans_t
+    if len(txt) < 4000:
+        return str(translator.translate(txt, src=lang, dest='ko').text)
+    else:
+        #t = []
+        tmp = 0
+        while tmp < len(txt):
+            cur = txt.rfind('.',tmp,tmp+4000)
+            t = txt[tmp:cur]
+            if len(t)==0:
+                break
+            tmp = cur
+            fulltrans += str(translator.translate(t, src=lang, dest='ko').text)
+            #print(fulltrans)
+    #fulltrans+=trans_t
     return fulltrans

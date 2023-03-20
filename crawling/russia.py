@@ -53,17 +53,17 @@ def get_news(links,key_title, key_text, key_update,key_img):
     except:
         key_img.append("no_img")
 
-# key_links = get_news_link()
-# # print(key_links[1])
-# # get_news(key_links[1], key_title, key_text, key_update)
+key_links = get_news_link()
+# print(key_links[1])
+# get_news(key_links[1], key_title, key_text, key_update)
 
-# for i in key_links:
-#     get_news(i, key_title, key_text, key_update, key_img)
+for i in key_links:
+    get_news(i, key_title, key_text, key_update, key_img)
 
-# for i in range(len(key_links)):
-#     print("link = " + key_links[i])
-#     print("title = " + key_title[i])
-#     print("update = " + key_update[i])
-#     print("text = " + key_text[i])
-#     print("img = " + key_img[i])
-#     print("\n\n")
+for i in range(len(key_links)):
+    print("link = " + key_links[i])
+    print("title = " + key_title[i])
+    print("update = " + key_update[i])
+    print("text = " + key_text[i])
+    print("img = " + key_img[i])
+    print("\n\n")
