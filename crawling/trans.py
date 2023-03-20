@@ -1,11 +1,12 @@
+#translating articles about corresponding languages
+
 #pip install googletrans==4.0.0-rc1
 from googletrans import Translator
 
 def trans(txt, lang):
     translator = Translator()
-    #translator.raise_Exception = True
     fulltrans = ''
-    trans_t=''
+
     if len(txt) < 4000:
         return str(translator.translate(txt, src=lang, dest='ko').text)
     else:
