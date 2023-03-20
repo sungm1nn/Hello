@@ -13,10 +13,10 @@ def trans(txt, lang):
         tmp = 0
         while tmp < len(txt):
             cur = txt.rfind('.',tmp,tmp+4000)
-            t = txt[tmp:cur]
+            t = txt[tmp:cur+1]
             if len(t)==0:
                 break
-            tmp = cur
+            tmp = cur+1
             fulltrans += str(translator.translate(t, src=lang, dest='ko').text)
             #print(fulltrans)
     #fulltrans+=trans_t
