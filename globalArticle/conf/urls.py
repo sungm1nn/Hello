@@ -18,6 +18,7 @@ from django.urls import path, include
 #from picknews import views
 
 urlpatterns = [
+    #pate('', index),
     path('admin/', admin.site.urls),
     path('picknews/', include('picknews.urls')),
     path('common/', include('common.urls')),
