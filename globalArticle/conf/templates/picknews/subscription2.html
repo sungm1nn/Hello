@@ -17,7 +17,22 @@
 {% include "navbar2.html" %}
 <!-- 기본 템플릿 안에 삽입될 내용 Start -->
 
-<p> intro</p>
+<form>
+  <fieldset>
+      <div class="form-group">
+          <label for="exampleSelect1" class="form-label mt-4">Nation</label>
+          <select style= "width:200px; font-size:15px" class="form-select" id="exampleSelect1">
+            <option>Russia</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+        </div>
+  </fieldset>
+</form>
+
+<p>sss</p>
 {% block content %}
 {% endblock %}
 <!-- 기본 템플릿 안에 삽입될 내용 End -->
@@ -25,6 +40,5 @@
 <script src="{% static 'bootstrap.min.js' %}"></script>
 </body>
 <p></p>
-<p> tail </p>
-<p></p>
+<p>sssss</p>
 </html>
