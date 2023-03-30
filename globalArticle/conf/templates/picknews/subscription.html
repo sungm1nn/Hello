@@ -5,29 +5,26 @@
   <fieldset>
     <div class="form-group">
       <label class="col-form-label mt-4" for="inputDefault">Keyword</label>
-      <input style= "width:200px; font-size:15px" type="text" class="form-control" placeholder="input keyword" id="inputDefault">
+      <input name="keyword" style= "width:200px; font-size:15px" type="text" class="form-control" placeholder="input keyword" id="keyword">
     </div>
     <div class="form-group">
-      <label for="exampleSelect1" class="form-label mt-4">Nation</label>
-        <select style= "width:200px; font-size:15px" class="form-select" id="exampleSelect1">
-          <option>Russia</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
+      <label for="exampleSelect1" class="form-label mt-4"> How often do you receive mail </label>
+        <select name="frequency" style= "width:200px; font-size:15px" class="form-select" id="exampleSelect1">
+          <option>once a day</option>
+          <option>once a week</option>
         </select>
     </div>
   </fieldset>
   <fieldset class="form-group">
     <legend class="mt-4">Nation</legend>
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+      <input name="russia" class="form-check-input" type="checkbox" value="on" id="flexCheckDefault">
       <label class="form-check-label" for="flexCheckDefault">
         Russia
       </label>
     </div>
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+      <input name="vietnam" class="form-check-input" type="checkbox" value="on" id="flexCheckDefault">
       <label class="form-check-label" for="flexCheckDefault">
         Vietnam
       </label>
@@ -38,16 +35,16 @@
         Vietnam2
       </label>
     </div>
-    <div class="form-check">
+    <!-- <div class="form-check">
       <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked="">
       <label class="form-check-label" for="flexCheckChecked">
         Checked checkbox
       </label>
-    </div>
+    </div> -->
     <fieldset class="form-group">
       <legend class="mt-4">Switches - keyword가 포함되지 않은 기사에 대한 메일링 </legend>
       <div class="form-check form-switch">
-        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+        <input name="check" class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
         <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
       </div>
       <!-- <div class="form-check form-switch">
@@ -55,8 +52,26 @@
         <label class="form-check-label" for="flexSwitchCheckChecked">Checked switch checkbox input</label>
       </div> -->
     </fieldset>
+
+    <div>
+          <label style="font-size:25px"> Hour (GMT+9, KST):  </label>
+          <input type="range" style= "width:300px" name="points" min="0" max="23" step="1" value="9" oninput="document.getElementById('value1').innerHTML=this.value;">
+          <span id="value1"></span>
+          <p> default time : 9AM </p>
+    </div>
+
     <p></p>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary" id="submit">Submit</button>
   </fieldset>
 </form>
+<script>
+  $(document).ready(function(){
+  $("#submit").click(function(){
+    if($("#keyword").val()){
+      alert("please check your keyword")
+      //여기?????
+    }
+    });
+  });
+</script>
 {% endblock %}
