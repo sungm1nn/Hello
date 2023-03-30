@@ -61,17 +61,20 @@
     </div>
 
     <p></p>
-    <button type="submit" class="btn btn-primary" id="submit">Submit</button>
+    <!-- <button type="submit" class="btn btn-primary" id="submit">Submit</button> -->
+    <input type="button" class="btn btn-primary" id="submit" name="submit" onclick="hi">submit
   </fieldset>
 </form>
 <script>
-  $(document).ready(function(){
+  function hi(){
+
   $("#submit").click(function(){
-    if($("#keyword").val()){
-      alert("please check your keyword")
+    var a =$("#keyword").val()
+    if(!a==false){
+      alert("please check your keyword");
       //여기?????
     }
-    });
-  });
+  })
+}
 </script>
 {% endblock %}
