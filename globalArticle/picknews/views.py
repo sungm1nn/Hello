@@ -8,7 +8,7 @@ def index(request):
     return render(request, 'base.html')
 
 def popup(request):
-    return render(request, 'keyword_alert,html')
+    return render(request, 'picknews/keyword_alert.html')
 
 @login_required(login_url='/common/login')
 def subs(request):
