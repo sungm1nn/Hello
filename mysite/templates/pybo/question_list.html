@@ -1,10 +1,47 @@
-{% if question_list %}
-    <ui>
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+<div class="container my-3">
+    <table class="table">
+        <thead class="table-dark">
+        <tr>
+            <th>번호</th>
+            <th>제목</th>
+            <th>작성일시</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if question_list %}
         {% for question in question_list %}
-            <!-- <li><a href="{% url 'pybo:detail' question_id %}">{{ question.subject }}</a></li> -->
-            <li><a href="{% url 'pybo:detail' question_id %}">{{ question.subject }}</a></li>
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>
+                <a href="{% url 'pybo:detail' question.id %}">
+                    {{ question.subject }}
+                </a>
+            </td>
+            <td>{{ question.create_date }}</td>
+        </tr>
         {% endfor %}
-    </ui>
+        {% else %}
+        <tr>
+            <td colspan="3">질문이 없습니다.</td>
+        </tr>    
+        {% endif %}
+        </tbody>
+    </table>
+</div>
+<!-- 
+{% if question_list %}
+    <ul>
+        {% for question in question_list %}
+            <li>
+                <a href="{% url 'pybo:detail' question.id %}">
+                {{ question.subject }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
 {% else %}
     <p> 질문이 없습니다. </p>
-{% endif %}
+{% endif %} -->
