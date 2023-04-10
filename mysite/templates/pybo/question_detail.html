@@ -1,5 +1,5 @@
-{% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+{% extends 'base.html' %}
+{% block content %}
 <div class="container my-3">
     <!-- 질문 -->
     <h2 class="border-bottom py-2">{{ question.subject }}</h2>
@@ -30,6 +30,17 @@
     <!-- 답변 등록 -->
     <form action="{% url 'pybo:answer_create' question.id %}" method="post" class="my-3">
         {% csrf_token %}
+        <!-- 오류 표시 -->
+        {% if form.errors %}
+        <div class="alert alert-danger" role="alert">
+        {% for field in form %}
+            {% if field.errors %}
+            <strong>{{ field.label }}</strong>
+            {% endif %}
+        {% endfor %}
+        </div>
+        {% endif %}
+        <!-- 오류 표시 끝  -->
         <div class="mb-3">
             <label for="content" class="form-label">답변내용</label>
             <textarea name="content" id="content" class="form-control" rows="10"></textarea>
@@ -37,24 +48,4 @@
         <input type="submit" value="답변등록" class="btn btn-primary">
     </form>
 </div>
-<!-- 
-<h1>{{ question.subject }}</h1>
-
-<div>
-    {{ question.content }}
-</div>
-
-<h5>{{ question.answer_set.count }}개의 답볍이 있습니다.</h5>
-<div>
-    <ul>
-        {% for answer in question.answer_set.all %}
-        <li>{{ answer.content }}</li>
-        {% endfor %}
-    </ul>
-</div>
-
-<form action="{% url 'pybo:answer_create' question.id %}" method="post">
-{% csrf_token %}
-<textarea name="content" id="content" rows="15"></textarea>
-<input type="submit" value="답변 등록">
-</form> -->
+{% endblock %}
