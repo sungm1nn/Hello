@@ -1,6 +1,6 @@
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
-from .forms import UserForm
+from common.forms import UserForm
 
 # Create your views here.
 def signup(request):
@@ -13,6 +13,6 @@ def signup(request):
             user = authenticate(username=username, password=raw_password)
             login(request, user)
             return redirect('index')
-        else:
-            form = UserForm()
-        return render(request, 'common/signup.html', {'form':form})
+    else:
+        form = UserForm()
+    return render(request, 'common/signup.html', {'form':form})
