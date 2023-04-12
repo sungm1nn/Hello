@@ -41,7 +41,8 @@ DJANGO_APPS = [
 #default apps
 
 PROJECT_APPS = [
-    'pybo.apps.PyboConfig'
+    'pybo.apps.PyboConfig',
+    'common.apps.CommonConfig'
 ]
 #apps for projects
 
@@ -133,3 +134,6 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_REDIREC_URL = '/'
+LOGOUT_REDIREC_URL = '/'
