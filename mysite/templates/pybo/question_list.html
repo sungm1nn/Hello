@@ -7,6 +7,7 @@
         <thead class="text-center table-dark">
         <tr>
             <th>번호</th>
+            <th>추천</th>
             <th style="width:50%">제목</th>
             <th>글쓴이</th>
             <th>작성일시</th>
@@ -17,8 +18,15 @@
         {% for question in question_list %}
         <tr class="text-center">
             <td>{{ question_list.paginator.count|sub:question_list.start_index|sub:forloop.counter0|add:1 }}</td>
+            <td>
+                <!-- {% if question.voter.all.count > 0 %} -->
+                <span class="badge badge-warning px-2 py-1" style="color:#460e8f">
+                    {{ question.voter.all.count }}
+                </span>
+                <!-- {% endif %} -->
+            </td>
             <td align="left">
-                <a href="{% url 'pybo:detail' question.id %}" style="text-decoration: none;">
+                <a href="{% url 'pybo:detail' question.id %}" style="cursor:hand;color:rgb(6, 117, 117); text-decoration: none;">
                     {{ question.subject }}
                 </a>
                 {% if question.answer_set.count > 0 %}
