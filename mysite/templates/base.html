@@ -6,16 +6,31 @@
     <meta charset="utf-8">
     <meta name="view point" content="width=device-width, initial-scale=1, shrink-ti-fit=no">
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-select.min.css' %}"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-select.css' %}"> -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.18/dist/css/bootstrap-select.min.css"> -->
+
+<!-- Latest compiled and minified JavaScript 한국어 번역 파일 -->
+
     <title>Hello, pybo!</title>
 </head>
 <body>
-{% include "navbar.html" %}
+{% include "navbar2.html" %}
 {% block content %}
 {% endblock %}
 <script src="{% static 'js/jquery-3.6.4.min.js' %}"></script>
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/bootstrap-select.min.js' %}"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/i18n/defaults-ko_KR.min.js"></script> -->
+<!-- <script src="{% static 'js/bootstrap-select.js' %}"></script> -->
 {% block script %}
 {% endblock %}
 </body>
 </html>
+
+<!-- footer -->
+<!-- <footer>
+    <adress>jjsm4690@naver.com</adress><br>
+    <small>sungm1nnn</small>
+</footer> -->

@@ -29,7 +29,7 @@ def question_modify(request, question_id):
         messages.error(request, '수정 권한이 없습니다.')
         return redirect('pybo:detail', question_id=question.id)
     if request.method =="POST":
-        messages.error(request, '수정 권한이 없습니다.')
+        #messages.error(request, '수정 권한이 없습니다.')
         form = QuestionForm(request.POST, instance=question)
         if form.is_valid():
             question = form.save(commit=False)
