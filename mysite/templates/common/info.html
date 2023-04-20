@@ -1,1 +1,17 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container my-4">
+    <h2>회원 정보</h2>
+    <table class="table">
+        <tr>
+            <th width='30%'>이메일</th>
+            <td>{{request.user.email}}</td>      
+        </tr>
+        <tr>
+            <th>이름</th>
+            <td>{{request.user}}</td>      
+        </tr>
+    </table>
+</div>
+{% endblock %}

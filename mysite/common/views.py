@@ -1,6 +1,7 @@
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from common.forms import UserForm
+from django.contrib.auth.models import User
 
 # Create your views here.
 def signup(request):
