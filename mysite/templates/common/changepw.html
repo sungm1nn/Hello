@@ -1,0 +1,15 @@
+<!--taxi/change_password.html-->
+{% extends "base.html" %}
+{% block content %}
+
+<h2 style="text-align:center;">비밀번호 변경</h2>
+<div class="container my-3">
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+<form method="post" style="text-align:center;">
+  {% csrf_token %}
+  {{ form }}
+  <button type="submit">Save changes</button>
+</form>
+</div>
+
+{% endblock %}
