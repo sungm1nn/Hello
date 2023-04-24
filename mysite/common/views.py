@@ -4,8 +4,9 @@ from common.forms import UserForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordChangeForm
-from django.contrib import messages
-from django.contrib.auth import update_session_auth_hash
+from django.contrib import messages, auth
+# from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.hashers import check_password
 
 # Create your views here.
 def signup(request):
@@ -26,17 +27,37 @@ def signup(request):
 def info(request):
     return render(request, 'common/info.html')
 
-@login_required(login_url='common:login')
+# @login_required(login_url='common:login')
+# def changepw(request):
+#     if request.method == 'POST':
+#         form = PasswordChangeForm(request.user, request.POST)
+#         if form.is_valid():
+#             user = form.save()
+#             update_session_auth_hash(request, user)  # Important!
+#             messages.success(request, 'Your password was successfully updated!')
+#             return redirect('index')
+#         else:
+#             messages.error(request, 'Please correct the error below.')
+#     else:
+#         form = PasswordChangeForm(request.user)
+#     return render(request, 'common/changepw.html', {'form': form})
+
 def changepw(request):
-    if request.method == 'POST':
-        form = PasswordChangeForm(request.user, request.POST)
-        if form.is_valid():
-            user = form.save()
-            update_session_auth_hash(request, user)  # Important!
-            messages.success(request, 'Your password was successfully updated!')
-            return redirect('index')
-        else:
-            messages.error(request, 'Please correct the error below.')
+  if request.method == "POST":
+    user = request.user
+    origin_password = request.POST["origin_password"]
+    if check_password(origin_password, user.password):
+      new_password = request.POST["new_password"]
+      confirm_password = request.POST["confirm_password"]
+      if new_password == confirm_password:
+        user.set_password(new_password)
+        user.save()
+        auth.login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+        return redirect('index')
+      else:
+        messages.error(request, 'Password not same')
     else:
-        form = PasswordChangeForm(request.user)
-    return render(request, 'common/changepw.html', {'form': form})
+      messages.error(request, 'Password not correct')
+    return render(request, 'common/changepw.html')
+  else:
+    return render(request, 'common/changepw.html')
