@@ -1,0 +1,25 @@
+<!-- Header -->
+        <header id="header">
+            <a href="{% url 'picknews:index' %}" class="logo"><strong>Forty</strong> <span>by HTML5 UP</span></a>
+            <nav>
+                <a href="#menu">Menu</a>
+            </nav>
+        </header>
+
+    <!-- Menu -->
+        <nav id="menu">
+            <ul class="links">
+                <li><a href="{% url 'picknews:index' %}">Home</a></li>
+                <li><a href="{% url 'picknews:subs' %}">subscription</a></li>
+                <li><a href="generic.html">Generic</a></li>
+                <li><a href="elements.html">Elements</a></li>
+            </ul>
+            <ul class="actions stacked">
+                <li><a href="#" class="button primary fit">Get Started</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'common:logout' %}" class="button fit">Log Out</a></li>
+                {% else %}
+                <li><a href="{% url 'common:login' %}" class="button fit">Log In</a></li>
+                {% endif %}
+            </ul>
+        </nav>

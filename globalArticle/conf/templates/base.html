@@ -1,40 +1,39 @@
 {% load static %}
 <!doctype html>
 <html lang="ko">
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.css' %}">
-    <!-- picknews CSS -->
-    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
-    
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
-
-    <title>Hello, PickNews!</title>
+		<title>Hello PickNews!</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
+        <link rel="stylesheet" href="{% static 'assets/css/style.css' %}" />
+		<noscript><link rel="stylesheet" href="{% static 'assets/css/noscript.css' %}" /></noscript>
 </head>
-<body>
-<!-- 네비게이션바 -->
-{% include "navbar2.html" %}
-<!-- 기본 템플릿 안에 삽입될 내용 Start -->
+<body class="is-preload">
 
-<p> intro</p>
-{% block content %}
+		<!-- Wrapper -->
+<div id="wrapper">
+{% include "head.html" %}
+	{% block content %}
+	{% endblock %}
+<!-- Footer -->
+{% include "footer.html" %}			
+</div>
+		<!-- Scripts -->
+		<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+		<script src="{% static 'assets/js/jquery.scrolly.min.js' %}"></script>
+		<script src="{% static 'assets/js/jquery.scrollex.min.js' %}"></script>
+		<script src="{% static 'assets/js/browser.min.js' %}"></script>
+		<script src="{% static 'assets/js/breakpoints.min.js' %}"></script>
+		<script src="{% static 'assets/js/util.js' %}"></script>
+		<script src="{% static 'assets/js/main.js' %}"></script>
+{% block script %}
 {% endblock %}
-<!-- 기본 템플릿 안에 삽입될 내용 End -->
-<!-- Bootstrap JS -->
-<script src="{% static 'bootstrap.min.js' %}"></script>
 </body>
-<p></p>
-<p> tail </p>
-<p></p>
 </html>
-<!-- <footer>
-    <adress>jjsm4690@naver.com</adress>
-    <small>sungm1nnn</small>
-</footer> -->

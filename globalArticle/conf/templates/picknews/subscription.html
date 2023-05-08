@@ -1,93 +1,107 @@
 {% extends "base.html" %}
 {% block content %}
 
-<form>
-  <fieldset>
-    <div class="form-group">
-      <label class="col-form-label mt-4" for="inputDefault">Keyword</label>
-      <input name="keyword" style= "width:200px; font-size:15px" type="text" class="form-control" placeholder="input keyword" id="keyword">
-    </div>
-    <div class="form-group">
-      <label for="exampleSelect1" class="form-label mt-4"> How often do you receive mail </label>
-        <select name="frequency" style= "width:200px; font-size:15px" class="form-select" id="exampleSelect1">
-          <option>once a day</option>
-          <option>once a week</option>
-        </select>
-    </div>
-  </fieldset>
-  <fieldset class="form-group">
-    <legend class="mt-4">Nation</legend>
-    <div class="form-check">
-      <input name="russia" class="form-check-input" type="checkbox" value="on" id="flexCheckDefault">
-      <label class="form-check-label" for="flexCheckDefault">
-        Russia
-      </label>
-    </div>
-    <div class="form-check">
-      <input name="vietnam" class="form-check-input" type="checkbox" value="on" id="flexCheckDefault">
-      <label class="form-check-label" for="flexCheckDefault">
-        Vietnam
-      </label>
-    </div>
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" disabled="">
-      <label class="form-check-label" for="flexCheckDefault">
-        Vietnam2
-      </label>
-    </div>
-    <!-- <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked="">
-      <label class="form-check-label" for="flexCheckChecked">
-        Checked checkbox
-      </label>
-    </div> -->
-    <fieldset class="form-group">
-      <legend class="mt-4">Switches - keyword가 포함되지 않은 기사에 대한 메일링 </legend>
-      <div class="form-check form-switch">
-        <input name="check" class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-        <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
+<div id="main" class="alt">
+  <!-- One -->
+    <section id="one">
+      <div class="inner">
+        <header class="major">
+          <h1>Subsciption</h1>
+        </header>
+        <form>
+          <fieldset>
+            <div class="form-group">
+              <label class="col-form-label mt-4" for="inputDefault">Keyword</label>
+              <input name="keyword" style= "width:200px; font-size:15px" type="text" class="form-control" placeholder="input keyword" id="keyword">
+            </div>
+            <div class="form-group">
+              <label for="exampleSelect1" class="form-label mt-4"> How often do you receive mail </label>
+                <select name="frequency" style= "width:200px; font-size:15px" class="form-select" id="exampleSelect1">
+                  <option>once a day</option>
+                  <option>once a week</option>
+                </select>
+            </div>
+          </fieldset>
+          <fieldset class="form-group">
+            <legend class="mt-4">Nation</legend>
+            <div class="form-check">
+              <input name="russia" class="form-check-input" type="checkbox" value="on" id="flexCheckDefault">
+              <label class="form-check-label" for="flexCheckDefault">
+                Russia
+              </label>
+            </div>
+            <div class="form-check">
+              <input name="vietnam" class="form-check-input" type="checkbox" value="on" id="flexCheckDefault">
+              <label class="form-check-label" for="flexCheckDefault">
+                Vietnam
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" disabled="">
+              <label class="form-check-label" for="flexCheckDefault">
+                Vietnam2
+              </label>
+            </div>
+            <!-- <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked="">
+              <label class="form-check-label" for="flexCheckChecked">
+                Checked checkbox
+              </label>
+            </div> -->
+            <fieldset class="form-group">
+              <legend class="mt-4">Switches - keyword가 포함되지 않은 최신 기사 알림 </legend>
+              <div class="form-check form-switch">
+                <input name="check" class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
+              </div>
+              <!-- <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked="">
+                <label class="form-check-label" for="flexSwitchCheckChecked">Checked switch checkbox input</label>
+              </div> -->
+            </fieldset>
+      
+            <div>
+                  <label style="font-size:20px"> Hour (GMT+9, KST):  </label>
+                  <input type="range" style= "width:300px" name="points" min="0" max="23" step="1" value="9" oninput="document.getElementById('value1').innerHTML=this.value;">
+                  <span id="value1">9AM</span>
+                  <p> default time : 9AM </p>
+            </div>
+      
+            <p></p>
+            <!-- <button type="submit" class="btn btn-primary" id="submit" name="submit">Submit</button> -->
+            <button type="button" class="btn btn-primary" id="submit" onclick="hi()">submit
+            </button>
+          </fieldset>
+        </form>
+      
+        <div class="modal-body">
+          <div class="invalid mb-2">
+            {% for error in form.non_field_errors %}
+            <p class="help-block text-sm text-danger mb-2">{{ error }}</p>
+            {% endfor %}
+          </div>
+      
+          {% for field in form %}
+          <div class="row mb-1 align-middle">
+            <div class="col-3">
+              <div class="text-sm text-right" for="{{ field.id_for_label }}">{{ field.label }}</div>
+            </div>
+            <div class="col-auto">
+              {{field}}
+              <div class="{% if field.errors %}invalid{% endif %}">
+                {% for error in field.errors %}
+                  <p class="help-block text-sm text-danger mb-2">{{ error }}</p>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
       </div>
-      <!-- <div class="form-check form-switch">
-        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked="">
-        <label class="form-check-label" for="flexSwitchCheckChecked">Checked switch checkbox input</label>
-      </div> -->
-    </fieldset>
-
-    <div>
-          <label style="font-size:25px"> Hour (GMT+9, KST):  </label>
-          <input type="range" style= "width:300px" name="points" min="0" max="23" step="1" value="9" oninput="document.getElementById('value1').innerHTML=this.value;">
-          <span id="value1"></span>
-          <p> default time : 9AM </p>
-    </div>
-
-    <p></p>
-    <!-- <button type="submit" class="btn btn-primary" id="submit" name="submit">Submit</button> -->
-    <button type="button" class="btn btn-primary" id="submit" onclick="hi()">submit
-    </button>
-  </fieldset>
-</form>
-<div class="modal-body">
-  <div class="invalid mb-2">
-    {% for error in form.non_field_errors %}
-    <p class="help-block text-sm text-danger mb-2">{{ error }}</p>
-    {% endfor %}
+      
+    </section>
   </div>
-  {% for field in form %}
-  <div class="row mb-1 align-middle">
-    <div class="col-3">
-      <div class="text-sm text-right" for="{{ field.id_for_label }}">{{ field.label }}</div>
-    </div>
-    <div class="col-auto">
-      {{field}}
-      <div class="{% if field.errors %}invalid{% endif %}">
-        {% for error in field.errors %}
-          <p class="help-block text-sm text-danger mb-2">{{ error }}</p>
-        {% endfor %}
-      </div>
-    </div>
-  </div>
-  {% endfor %}
-</div>
+  
 <script>
   //alert("please check your keyword");
   function hi(){
